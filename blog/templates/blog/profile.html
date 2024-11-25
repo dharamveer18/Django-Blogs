@@ -1,0 +1,125 @@
+{% extends 'blog/base.html' %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }}'s Profile</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: block;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.col {
+            margin: 0%;
+            padding: 20px;
+            padding-left: 15%;
+        }
+
+        div.profile-container {
+            margin: 50px;
+            /* background-color: black; */
+            border: 5px wheat;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 50%;
+            margin-left: 35px;
+        }
+
+        /* .login-container{
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px; */
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .profile-image {
+            align-items: center;
+            text-align: center;
+        }
+
+        .edit {
+            text-align: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="row">
+            <div class="col">
+                <div class="profile-container">
+                    <h1>
+                        <div class="profile-image">
+                            {% if user.profile_image %}
+                            <img src="{{ user.profile_image.url }}" height="100px" width="100px" alt="Profile Image">
+                            {% else %}
+                        </div>
+                        <p>No profile image uploaded.</p>
+                        {% endif %}
+                </div>
+                </h1>
+
+                <!-- Div for email -->
+                <div class="form-group">
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                </div>
+
+                <!-- Div for page number -->
+                <div class="form-group">
+                    <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+                </div>
+
+                <!-- Div for state -->
+                <div class="form-group">
+                    <p><strong>State:</strong> {{ user.state }}</p>
+                </div>
+
+                <!-- Div for city -->
+                <div class="form-group">
+                    <p><strong>City:</strong> {{ user.city }}</p>
+                </div>
+
+                <!-- Div for profile image -->
+                <!-- <div class="profile-image">
+        {% if user.profile_image %}
+            <img src="{{ user.profile_image.url }}" height="100px" width="100px" alt="Profile Image">
+        {% else %}
+        </div>
+            <p>No profile image uploaded.</p>
+        {% endif %}
+            </div> -->
+
+                <!-- Div for edit button -->
+                <div class="edit">
+                    <a href="{% url 'edit_profile' %}" target="_blank"><img
+                            src="https://cdn-icons-png.freepik.com/256/4410/4410903.png?semt=ais_hybrid" height="50px"
+                            width="50px"></a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+{% endblock %}
